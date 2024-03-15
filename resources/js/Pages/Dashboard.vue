@@ -64,6 +64,7 @@ export default {
     mounted() {
         window.Echo.join(`online`)
             .here(users => {
+                console.log(users)
                 this.onlineUsers = users;
             })
             .joining(user => {

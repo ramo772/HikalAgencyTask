@@ -35,7 +35,7 @@ import Echo from "laravel-echo";
 
 window.Echo = new Echo({
     broadcaster: "pusher",
-    key: "df3cc999935ebe13e29a",
+    key: "249192519f4176a3ee78",
     wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,

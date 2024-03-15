@@ -65,3 +65,13 @@ You will see register and login buttons in order to create a new account or logi
 
 After login you will go to the dashboard
 
+![alt text](image-1.png)
+
+Hit Show Random User to start new random conversation
+![alt text](image-2.png)
+
+Hit Accept to start chat 
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
