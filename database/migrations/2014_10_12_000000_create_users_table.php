@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('session_id')->nullable();
             $table->string('avatar');
             $table->enum('status',['online','offline']);
             $table->enum('gender',['male','female']);
