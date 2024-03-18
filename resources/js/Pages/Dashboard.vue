@@ -21,7 +21,7 @@ import { Head } from '@inertiajs/vue3';
                 <h2 class="text-lg font-semibold mb-2">Random User</h2>
                 <div class="border p-4 rounded">
                     <div class="flex items-center mb-4">
-                        <img :src="'storage/users-avatar/' +randomUser.avatar" alt="User Avatar" class="h-10 w-10 rounded-full mr-4">
+                        <img :src="randomUser.avatar" alt="User Avatar" class="h-10 w-10 rounded-full mr-4">
                         <div>
                             <p class="text-gray-800 font-semibold">{{ randomUser.name }}</p>
                             <p class="text-gray-500">{{ randomUser.gender }}</p>
@@ -83,6 +83,8 @@ showRandomUser(currentUser) {
         if (filteredUsers.length > 0) {
             const randomIndex = Math.floor(Math.random() * filteredUsers.length);
             this.randomUser = filteredUsers[randomIndex];
+                console.log(this.randomUser)
+
         }
             }
         },

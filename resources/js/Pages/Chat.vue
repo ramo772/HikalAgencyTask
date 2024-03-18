@@ -2,13 +2,13 @@
 <template>
 
 
+    <AuthenticatedLayout>
   <div class="chat-container">
-    <!-- User list -->
     <div class="user-list">
       <h2>Users</h2>
       <ul>
         <li v-for="user in users" :key="user.id" @click="selectUser(user)">
-          <img :src="'storage/users-avatar/' + user.avatar" :alt="user.name" class="avatar">
+          <img :src=" user.avatar" :alt="user.name" class="avatar">
           <span>{{ user.name }}</span>
         </li>
       </ul>
@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-
+</AuthenticatedLayout>
 </template>
 
 
@@ -36,6 +36,7 @@ import { ref, nextTick } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 export default {
   props: {
@@ -52,6 +53,10 @@ users: {
       required: true,
     },
   },
+    components: {
+    AuthenticatedLayout,
+  },
+
   setup(props) {
     const userSelected = ref(props.selectedUser?props.selectedUser : null);
     const messages = ref(props.messages);
@@ -117,7 +122,7 @@ window.Pusher = Pusher;
 
 window.Echo = new Echo({
     broadcaster: "pusher",
-    key: "249192519f4176a3ee78",
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
     wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,
@@ -147,6 +152,7 @@ const scrollToBottom = () => {
       newMessage,
       selectUser,
       sendMessage,
+
     };
   },
 

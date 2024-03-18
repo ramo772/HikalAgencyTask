@@ -54,4 +54,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class, 'to_id');
     }
+
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => 'storage/users-avatar/' . ($value),
+        );
+    }
 }
