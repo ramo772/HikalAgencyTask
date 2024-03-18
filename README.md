@@ -72,6 +72,4 @@ Hit Show Random User to start new random conversation
 
 Hit Accept to start chat 
 
-![alt text](image-3.png)
-
-![alt text](image-4.png)
+![alt text](image-5.png)
