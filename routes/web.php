@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebService\Dashboard\DashboardController;
 use App\Http\Controllers\WebService\Home\HomePageController;
@@ -20,13 +20,19 @@ use Inertia\Inertia;
 */
 
 Route::get('/', HomePageController::class);
+Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('/chat', [MessageController::class, 'index'])->name('chat');
+    Route::get('/messages/{receiver}', [MessageController::class, 'show'])->name('messages.fetch');
+    Route::post('/send-message', [MessageController::class, 'store'])->name('send.message');
+});
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified','auth.session'])->name('dashboard');
-
-Route::middleware(['auth','auth.session'])->group(function () {
+Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';

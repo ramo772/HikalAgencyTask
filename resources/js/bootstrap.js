@@ -40,8 +40,17 @@ window.Echo = new Echo({
     wsPort: 6001,
     forceTLS: false,
     disableStats: true,
-    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER, //added this line
+    cluster: 'eu'
 });
+window.Echo.channel(`messages`)
+
+.listen('MessageSent', (e) => {
+
+    console.log(e); // e.message wil contains your message
+
+
+});
+
 window.Echo.join(`online`)
     .here((users) => {
         console.log(users);

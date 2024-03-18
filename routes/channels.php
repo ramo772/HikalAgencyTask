@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -21,3 +22,6 @@ Broadcast::channel('online', function (User $user) {
         return $user;
 });
 
+Broadcast::channel('messages', function ($user, ) {
+    return$user->id ;
+});
